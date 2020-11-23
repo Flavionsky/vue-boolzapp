@@ -12,12 +12,19 @@ body{
         #009688 15vh,
         #dddbd1 15vh,
         #d2dbdc 100%);
+  background-repeat: no-repeat;
 }
 .c-flex{
   display: flex;
 }
+ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 a{
   color: black;
+  text-decoration: none;
 }
 .fa-circle-notch:hover {
     animation: rotate 1s linear infinite;
@@ -32,7 +39,8 @@ a{
 }
 .container{
   border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 80%;
+  min-width: 700px;
+  width: 1400px;
   height: 90%;
 }
 .left-bar{
@@ -56,7 +64,6 @@ a{
   border-right: 1px solid rgba(0, 0, 0, 0.3);
 }
 .left-bar > .user-nav > .user-description,
-.left-bar > .chat-nav > .users > .user,
 .right-section > .header-nav > .user-description{
   padding-left: 20px;
   align-items: center;
@@ -85,11 +92,19 @@ a{
   height: 100%;
 }
 .left-bar > .chat-nav > .users > .user{
+  align-items: center;
+  padding-left: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+.left-bar > .chat-nav > .users > .user:hover{
+  background-color: lightgrey;
+}
+.backgroundColor{
+  background-color: lightseagreen;
+}
 .left-bar > .chat-nav > .users > .user > h3{
-padding-bottom: 40px;
-padding-left: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
 }
 .left-bar >.silent-mode{
   justify-content: flex-start;
@@ -147,6 +162,7 @@ padding-left: 20px;
   left: 30px;
 }
 .right-section > .header-nav{
+  min-height: 80px;
   justify-content: space-between;
   align-items: center;
 }
@@ -168,17 +184,60 @@ padding-left: 20px;
   opacity: 0.5;
 }
 .right-section > .chat-section{
+  overflow-y: auto;
   height: 100%;
-  min-height: 80px;
   flex-direction: column;
-  position: relative;
   background-image: url("../img/mine.jpg");
 }
-.right-section > .chat-section > .chat-tools{
+.chat-section > ul{
+  flex-direction: column;
+}
+.chat-section > ul > li > p:last-child{
+  align-self: flex-end;
+  padding-left: 10px;
+  font-size: 10px;
+}
+.chat-section > ul > li.mexRec:before {
+  content: "";
+  position: absolute;
+  border-right: 10px solid #FFFFFF;
+  border-left: 10px solid transparent;
+  border-top: 10px solid #FFFFFF;
+  border-bottom: 10px solid transparent;
+  left: -10px;
+  top: 6px;
+}
+.chat-section > ul > li.mexRec{
+  position: relative;
+  background-color:#FFFFFF;
+  padding: 20px;
+  align-self: flex-start;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.chat-section > ul > li.mexSend:before {
+  content: "";
+  position: absolute;
+  border-right: 10px solid transparent;
+  border-left: 10px solid #E4FAC9;
+  border-top: 10px solid #E4FAC9;
+  border-bottom: 10px solid transparent;
+  right: -10px;
+  top: 6px;
+}
+.chat-section > ul > li.mexSend{
+  position: relative;
+  background-color:#E4FAC9;
+  padding: 20px;
+  align-self: flex-end;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+.right-section > .chat-tools{
   justify-content: space-around;
   align-items: center;
-  position: absolute;
-  bottom: 0;
   background-color: #F3EEEA;
   min-height: 80px;
   width: 100%;
