@@ -78,44 +78,52 @@ var app = new Vue({
           {
             sentdate: "19.30",
             text: "Ciao sono Fabio",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "19.35",
             text: "ciao, piacere di conoscerti!",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "20.03",
             text: "piacere, e tu?",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "21.07",
             text: "Sono Flavio :)",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           }
         ],
         answers:[
           {
             sentdate: todayDate(),
             text: "alla prossima!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "certo, perchè no!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "come preferisci",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "a presto, ciao",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           }
         ]
       },
@@ -128,39 +136,46 @@ var app = new Vue({
           {
             sentdate: "10.30",
             text: "hai portato a spasso il cane?",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "10.31",
             text: "ricordati di dargli da mangiare!",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "11.00",
             text: "tutto fatto!",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           }
         ],
         answers:[
           {
             sentdate: todayDate(),
             text: "alla prossima!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "certo, perchè no!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "come preferisci",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "a presto, ciao",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           }
         ]
       },
@@ -173,39 +188,46 @@ var app = new Vue({
           {
             sentdate: "9.30",
             text: "la marianna va in campagna",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "19.30",
             text: "sicura di non aver sbagliato chat?",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "24.00",
             text: "ah scusa",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           }
         ],
         answers:[
           {
             sentdate: todayDate(),
             text: "alla prossima!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "certo, perchè no!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "come preferisci",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "a presto, ciao",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           }
         ]
       },
@@ -218,44 +240,52 @@ var app = new Vue({
           {
             sentdate: "11.04",
             text: "ciao, come va oggi?",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "11.22",
             text: "un pò così, sono carico di lavoro",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "11.24",
             text: "te invece che mi dici?",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "12.40",
             text: "le solite cose",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           }
         ],
         answers:[
           {
             sentdate: todayDate(),
             text: "alla prossima!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "certo, perchè no!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "come preferisci",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "a presto, ciao",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           }
         ]
       },
@@ -268,34 +298,40 @@ var app = new Vue({
           {
             sentdate: "19.50",
             text: "ciao Flavio, quanto tempo! ti ricordi di me?",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "21.20",
             text: "ciao Giulia, certo che mi ricordo!",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           }
         ],
         answers:[
           {
             sentdate: todayDate(),
             text: "alla prossima!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "certo, perchè no!",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "come preferisci",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "a presto, ciao",
-             direction: "received"
+             direction: "received",
+             hiddenDisplay : "none"
           }
         ]
       },
@@ -308,34 +344,40 @@ var app = new Vue({
           {
             sentdate: "24.00",
             text: "ci sei?",
-            direction: "send"
+            direction: "send",
+            hiddenDisplay : "none"
           },
           {
             sentdate: "02.00",
             text: "si scusa, ho avuto da fare in questi giorni",
-            direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           }
         ],
         answers:[
           {
             sentdate: todayDate(),
             text: "alla prossima!",
-             direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "certo, perchè no!",
-             direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "come preferisci",
-             direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           },
           {
             sentdate: todayDate(),
             text: "a presto, ciao",
-             direction: "received"
+            direction: "received",
+            hiddenDisplay : "none"
           }
         ]
       }
