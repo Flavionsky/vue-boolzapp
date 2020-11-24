@@ -73,7 +73,7 @@
             <img :src="users[userId].url" alt="avatar">
             <div class="user-lastseen">
               <h4>{{users[userId].name}}</h4>
-              <p>Ultimo accesso oggi alle</p>
+              <p>Ultimo accesso {{users[userId].lastseen}}</p>
             </div>
           </div>
           <div class="icon c-flex">
@@ -88,16 +88,27 @@
             </a>
           </div>
         </div>
-        <div class="chat-section c-flex">
+        <div id="chat-section" class="chat-section c-flex">
           <ul class="messages c-flex">
-            <li class="c-flex" v-bind:class="{mexSend:(message.direction == 'send'), mexRec:(message.direction == 'received')}" v-for="message in users[userId].messages"><p>{{message.text}}</p><p>{{message.sentdate}}</p></li>
+            <li class="c-flex" v-bind:class="{mexSend:(message.direction == 'send'), mexRec:(message.direction == 'received')}" v-for="(message, index) in users[userId].messages">
+              <a href="#">
+                <i @click="changeDisplay(index)" class="fa fa-chevron-down" aria-hidden="true"></i>
+                <div id="mydrop" v-bind:class="{ dropdown:(message.hiddenDisplay == 'block'),hidden:(message.hiddenDisplay == 'none')}">
+                  <ul>
+                    <li><a @click="removeMessage(index)" href="#">Cancella messaggio</a></li>
+                  </ul>
+                </div>
+              </a> 
+              <p>{{message.text}}</p>
+              <p>{{message.sentdate}}</p>
+            </li>
           </ul>
         </div>
         <div class="chat-tools c-flex">
           <div class="icon c-flex">
              <a href="#"><i class="far fa-2x fa-smile"></i></a>
           </div>
-          <input v-model="newMessage" v-on:keyup.enter="insertNewMessage(newMessage)" type="text" name="" placeholder="Scrivi un messaggio">
+          <input v-model="newMessage" v-on:keyup.enter="insertNewMessage(newMessage), replyMessage()" type="text" name="" placeholder="Scrivi un messaggio">
           <div class="icon c-flex">
              <a href="#"><i class="fas fa-2x fa-microphone"></i></a>
           </div>

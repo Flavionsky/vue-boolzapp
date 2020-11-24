@@ -192,9 +192,12 @@ a{
 .chat-section > ul{
   flex-direction: column;
 }
+.chat-section > ul > li > p{
+  margin-top: -5px;
+}
 .chat-section > ul > li > p:last-child{
+  margin-top: -5px;
   align-self: flex-end;
-  padding-left: 10px;
   font-size: 10px;
 }
 .chat-section > ul > li.mexRec:before {
@@ -208,9 +211,9 @@ a{
   top: 6px;
 }
 .chat-section > ul > li.mexRec{
+  padding: 0 20px 0 20px;
   position: relative;
   background-color:#FFFFFF;
-  padding: 20px;
   align-self: flex-start;
   border-radius: 20px;
   margin-top: 10px;
@@ -227,13 +230,44 @@ a{
   top: 6px;
 }
 .chat-section > ul > li.mexSend{
+  padding: 0 20px 0 20px;
   position: relative;
   background-color:#E4FAC9;
-  padding: 20px;
   align-self: flex-end;
   border-radius: 20px;
   margin-top: 10px;
   margin-right: 20px;
+}
+.chat-section > ul > li{
+  flex-direction: column;
+}
+.chat-section > ul > li > a{
+  align-self: flex-end;
+  position: relative;
+}
+.fa-chevron-down{
+  visibility: hidden;
+}
+#mydrop{
+  position: absolute;
+  padding: 10px;
+  text-align: center;
+  top: 25px;
+  right: 0;
+  height: 100px;
+  width: 150px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5);
+}
+.hidden{
+  display: none;
+}
+.dropdown{
+  display: block;
+}
+.chat-section > ul > li:hover .fa-chevron-down{
+  visibility: visible;
 }
 .right-section > .chat-tools{
   justify-content: space-around;
