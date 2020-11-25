@@ -26,7 +26,6 @@ var app = new Vue({
       {
         name: "Matteo",
         url: "img/avatar_5.jpg",
-        id: 0,
         lastseen:"22/10/2020 10:30",
         messages:[
           {
@@ -72,7 +71,6 @@ var app = new Vue({
       {
         name: "Fabio",
         url: "img/avatar_4.jpg",
-        id: 1,
         lastseen:"26/10/2020 11:43",
         messages:[
           {
@@ -130,7 +128,6 @@ var app = new Vue({
       {
         name: "Samuele",
         url: "img/avatar_1.jpg",
-        id: 2,
         lastseen:"01/11/2020 23.12",
         messages:[
           {
@@ -182,7 +179,6 @@ var app = new Vue({
       {
         name: "Luisa",
         url: "img/avatar_2.jpg",
-        id: 3,
         lastseen:"03/09/2020 09:10",
         messages:[
           {
@@ -234,7 +230,6 @@ var app = new Vue({
       {
         name: "Giuseppe",
         url: "img/avatar_7.jpg",
-        id: 4,
         lastseen:"23/11/2020 22:14",
         messages:[
           {
@@ -292,7 +287,6 @@ var app = new Vue({
       {
         name: "Giulia",
         url: "img/avatar_3.jpg",
-        id: 5,
         lastseen:"12/11/2020 20:10",
         messages:[
           {
@@ -338,7 +332,6 @@ var app = new Vue({
       {
         name: "Gennaro",
         url: "img/avatar_8.jpg",
-        id: 6,
         lastseen:"24/11/2020 10:30",
         messages:[
           {
@@ -383,23 +376,31 @@ var app = new Vue({
       }
     ],
     letter: "",
-    userId: 0,
-    newMessage: [],
+    activeContact: null,
+    activeMessage: null,
+    editActive : false,
+    newMessage: "",
+  },
+  created() {
+    this.activeContact = this.users[0];
+    this.activeMessage = this.activeContact.messages[0];
   },
   methods: {
-    selectItem(el){
-      this.userId = el.id;
+    selectItem(contact){
+      this.activeContact = contact;
+    },
+    selectMessage(message){
+      this.activeMessage = message;
     },
     insertNewMessage(textinput){
       const object = { sentdate: todayDate(), text: textinput, direction: "send",hiddenDisplay : "none"};
-      this.users[this.userId].messages.push(object);
+      this.activeContact.messages.push(object);
       this.newMessage="";
       this.autoscroll();
     },
     replyMessage(){
-      let position = this.userId;
       setTimeout(()=>{
-          this.users[position].messages.push(this.users[position].answers[getRandom(0, 3)])
+          this.activeContact.messages.push(this.activeContact.answers[getRandom(0, 3)])
       }, 3000)
     },
     autoscroll(){
@@ -410,19 +411,51 @@ var app = new Vue({
 
     },
     removeMessage(i){
-      this.users[this.userId].messages.splice(i, 1);
+      this.activeContact.messages.splice(i, 1);
+    },
+    openEditMessage(i){
+      let myDropdown = document.getElementById("editDropdown");
+      let myMicrophone = document.getElementById("microphone");
+      let myCheck = document.getElementById("check");
+      myCheck.classList.remove("hidden");
+      myDropdown.classList.remove("hidden");
+      myMicrophone.classList.add("hidden");
+      this.newMessage = this.activeContact.messages[i].text;
+      this.activeContact.messages[i].hiddenDisplay="none";
+      this.editActive = true;
+    },
+    editMessage(){
+      let myDropdown = document.getElementById("editDropdown");
+      let myMicrophone = document.getElementById("microphone");
+      let myCheck = document.getElementById("check");
+      this.activeMessage.text = this.newMessage;
+      this.newMessage="";
+      this.editActive = false;
+      myCheck.classList.add("hidden");
+      myMicrophone.classList.remove("hidden");
+      myDropdown.classList.add("hidden");
+    },
+    editMessageClose(){
+      let myDropdown = document.getElementById("editDropdown");
+      let myMicrophone = document.getElementById("microphone");
+      let myCheck = document.getElementById("check");
+      this.newMessage="";
+      myCheck.classList.add("hidden");
+      myMicrophone.classList.remove("hidden");
+      myDropdown.classList.add("hidden");
+      this.editActive = false;
     },
     changeDisplay(i) {
-      if(this.users[this.userId].messages[i].hiddenDisplay=="none"){
-        this.users[this.userId].messages[i].hiddenDisplay="block"
+      if(this.activeContact.messages[i].hiddenDisplay=="none"){
+        this.activeContact.messages[i].hiddenDisplay="block";
       } else {
-        this.users[this.userId].messages[i].hiddenDisplay="none"
+        this.activeContact.messages[i].hiddenDisplay="none";
       }
     }
   },
   computed:{
     filterUsers() {
-      return this.users.filter(el =>{return el.name.toLowerCase().includes(this.letter.toLowerCase())});
+      return this.users.filter(el => el.name.toLowerCase().includes(this.letter.toLowerCase()));
     }
   }
 })

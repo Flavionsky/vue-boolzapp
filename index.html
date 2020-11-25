@@ -19,10 +19,6 @@
 
 		<link rel="stylesheet" href="css/style.css">
 
-		<!-- Custom JS -->
-
-		<!-- <script src="js/functions.js" charset="utf-8"></script> -->
-
     <title>BoolzApp</title>
   </head>
   <body class="c-flex">
@@ -60,7 +56,7 @@
         </div>
         <div class="chat-nav">
           <ul  class="users">
-            <li @click="selectItem(user)" v-for="user in filterUsers" class="user c-flex" v-bind:class="{backgroundColor:(userId == user.id)}">
+            <li @click="selectItem(user),editMessageClose(),dropdownClose()" v-for="user in filterUsers" class="user c-flex" v-bind:class="{backgroundColor:(activeContact == user)}">
               <img :src="user.url" alt="avatar">
               <h3>{{user.name}}</h3>
             </li>
@@ -70,10 +66,10 @@
       <div class="right-section c-flex">
         <div class="header-nav c-flex">
           <div class="user-description c-flex">
-            <img :src="users[userId].url" alt="avatar">
+            <img :src="activeContact.url" alt="avatar">
             <div class="user-lastseen">
-              <h4>{{users[userId].name}}</h4>
-              <p>Ultimo accesso {{users[userId].lastseen}}</p>
+              <h4>{{activeContact.name}}</h4>
+              <p>Ultimo accesso {{activeContact.lastseen}}</p>
             </div>
           </div>
           <div class="icon c-flex">
@@ -90,27 +86,43 @@
         </div>
         <div id="chat-section" class="chat-section c-flex">
           <ul class="messages c-flex">
-            <li class="c-flex" v-bind:class="{mexSend:(message.direction == 'send'), mexRec:(message.direction == 'received')}" v-for="(message, index) in users[userId].messages">
+            <li class="c-flex" v-bind:class="{mexSend:(message.direction == 'send'), mexRec:(message.direction == 'received')}" v-for="(message, index) in activeContact.messages">
               <a href="#">
                 <i @click="changeDisplay(index)" class="fa fa-chevron-down" aria-hidden="true"></i>
                 <div id="mydrop" v-bind:class="{ dropdown:(message.hiddenDisplay == 'block'),hidden:(message.hiddenDisplay == 'none')}">
                   <ul>
-                    <li><a @click="removeMessage(index)" href="#">Cancella messaggio</a></li>
+                    <li><a @click="removeMessage(index)" href="#">Cancella messaggio</a>
+                    </li>
+                    <li v-bind:class="{hidden:(message.direction == 'received')}">
+                      <a @click="openEditMessage(index), selectMessage(message)" href="#">Modifica Messaggio</a>
+                    </li>
                   </ul>
                 </div>
-              </a> 
+              </a>
               <p>{{message.text}}</p>
               <p>{{message.sentdate}}</p>
             </li>
           </ul>
         </div>
+        <div id="editDropdown" class="hidden c-flex">
+          <div class="left-side c-flex">
+            <i class="fas fa-pencil-alt"></i>
+            <h5>Modifica messaggio</h5>
+          </div>
+          <span>{{newMessage}}</span>
+          <a @click="editMessageClose()" href="#">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
         <div class="chat-tools c-flex">
           <div class="icon c-flex">
              <a href="#"><i class="far fa-2x fa-smile"></i></a>
           </div>
-          <input v-model="newMessage" v-on:keyup.enter="insertNewMessage(newMessage), replyMessage()" type="text" name="" placeholder="Scrivi un messaggio">
+          <input v-if="editActive" v-model="newMessage" type="text" name="" id="">
+          <input v-else v-model="newMessage" v-on:keyup.enter="insertNewMessage(newMessage), replyMessage()" type="text" name="" placeholder="Scrivi un messaggio">
           <div class="icon c-flex">
-             <a href="#"><i class="fas fa-2x fa-microphone"></i></a>
+             <a id="microphone" href="#"><i class="fas fa-2x fa-microphone"></i></a>
+             <a @click="editMessage()" id="check" class="hidden" href="#"><i class="fas fa-2x fa-check"></i></a>
           </div>
         </div>
       </div>

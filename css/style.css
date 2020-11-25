@@ -193,6 +193,7 @@ a{
   flex-direction: column;
 }
 .chat-section > ul > li > p{
+  word-break: break-all;
   margin-top: -5px;
 }
 .chat-section > ul > li > p:last-child{
@@ -244,16 +245,21 @@ a{
 .chat-section > ul > li > a{
   align-self: flex-end;
   position: relative;
+  z-index: 0;
 }
 .fa-chevron-down{
   visibility: hidden;
 }
+.chat-section > ul > li:hover .fa-chevron-down{
+  visibility: visible;
+}
 .mexSend #mydrop{
+  z-index: 100;
   font-size: 14px;
   position: absolute;
   padding: 10px;
   text-align: center;
-  top: 25px;
+  top: 35px;
   right: 0px;
   height: 100px;
   width: 130px;
@@ -262,6 +268,7 @@ a{
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5);
 }
 .mexRec #mydrop{
+  z-index: 100;
   font-size: 14px;
   position: absolute;
   padding: 10px;
@@ -274,14 +281,43 @@ a{
   border-radius: 10px;
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5);
 }
+#mydrop li {
+  padding-top: 10px;
+}
 .hidden{
   display: none;
 }
 .dropdown{
   display: block;
 }
-.chat-section > ul > li:hover .fa-chevron-down{
-  visibility: visible;
+.right-section > #editDropdown{
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  background-color: #F3EEEA;
+  opacity: 0.9;
+}
+#editDropdown > .left-side{
+  align-items: center;
+}
+#editDropdown > .left-side > h5{
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+#editDropdown > span {
+  word-break: break-all;
+}
+#editDropdown > .left-side > .fa-pencil-alt{
+  margin-left: 30px;
+  font-size: 30px;
+}
+#editDropdown > a {
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+  align-self: flex-start;
+  opacity: 0.7;
 }
 .right-section > .chat-tools{
   justify-content: space-around;
