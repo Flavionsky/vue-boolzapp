@@ -389,8 +389,8 @@ var app = new Vue({
     selectItem(contact){
       this.activeContact = contact;
     },
-    selectMessage(message){
-      this.activeMessage = message;
+    selectMessage(mex){
+      this.activeMessage = mex;
     },
     insertNewMessage(textinput){
       const object = { sentdate: todayDate(), text: textinput, direction: "send",hiddenDisplay : "none"};
@@ -399,8 +399,9 @@ var app = new Vue({
       this.autoscroll();
     },
     replyMessage(){
+      let position = this.activeContact;
       setTimeout(()=>{
-          this.activeContact.messages.push(this.activeContact.answers[getRandom(0, 3)])
+          position.messages.push(position.answers[getRandom(0, 3)])
       }, 3000)
     },
     autoscroll(){
@@ -413,15 +414,15 @@ var app = new Vue({
     removeMessage(i){
       this.activeContact.messages.splice(i, 1);
     },
-    openEditMessage(i){
+    openEditMessage(mex){
       let myDropdown = document.getElementById("editDropdown");
       let myMicrophone = document.getElementById("microphone");
       let myCheck = document.getElementById("check");
       myCheck.classList.remove("hidden");
       myDropdown.classList.remove("hidden");
       myMicrophone.classList.add("hidden");
-      this.newMessage = this.activeContact.messages[i].text;
-      this.activeContact.messages[i].hiddenDisplay="none";
+      this.newMessage = mex.text;
+      mex.hiddenDisplay="none";
       this.editActive = true;
     },
     editMessage(){
@@ -444,12 +445,13 @@ var app = new Vue({
       myMicrophone.classList.remove("hidden");
       myDropdown.classList.add("hidden");
       this.editActive = false;
+      this.activeMessage.hiddenDisplay="none";
     },
-    changeDisplay(i) {
-      if(this.activeContact.messages[i].hiddenDisplay=="none"){
-        this.activeContact.messages[i].hiddenDisplay="block";
+    changeDisplay(mex) {
+      if(mex.hiddenDisplay=="none"){
+        mex.hiddenDisplay="block";
       } else {
-        this.activeContact.messages[i].hiddenDisplay="none";
+        mex.hiddenDisplay="none";
       }
     }
   },
