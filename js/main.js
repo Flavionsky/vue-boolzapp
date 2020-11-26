@@ -379,7 +379,7 @@ var app = new Vue({
     activeContact: null,
     activeMessage: null,
     editActive : false,
-    newMessage: "",
+    newMessage: ""
   },
   created() {
     this.activeContact = this.users[0];
@@ -411,39 +411,26 @@ var app = new Vue({
       })
 
     },
+    removeUser(user){
+      let myindex = this.users.findIndex(el => el == user);
+      this.users.splice(myindex, 1);
+      this.users.unshift(user);
+    },
     removeMessage(i){
       this.activeContact.messages.splice(i, 1);
     },
     openEditMessage(mex){
-      let myDropdown = document.getElementById("editDropdown");
-      let myMicrophone = document.getElementById("microphone");
-      let myCheck = document.getElementById("check");
-      myCheck.classList.remove("hidden");
-      myDropdown.classList.remove("hidden");
-      myMicrophone.classList.add("hidden");
       this.newMessage = mex.text;
       mex.hiddenDisplay="none";
       this.editActive = true;
     },
     editMessage(){
-      let myDropdown = document.getElementById("editDropdown");
-      let myMicrophone = document.getElementById("microphone");
-      let myCheck = document.getElementById("check");
       this.activeMessage.text = this.newMessage;
       this.newMessage="";
       this.editActive = false;
-      myCheck.classList.add("hidden");
-      myMicrophone.classList.remove("hidden");
-      myDropdown.classList.add("hidden");
     },
     editMessageClose(){
-      let myDropdown = document.getElementById("editDropdown");
-      let myMicrophone = document.getElementById("microphone");
-      let myCheck = document.getElementById("check");
-      this.newMessage="";
-      myCheck.classList.add("hidden");
-      myMicrophone.classList.remove("hidden");
-      myDropdown.classList.add("hidden");
+      this.newMessage="";;
       this.editActive = false;
       this.activeMessage.hiddenDisplay="none";
     },

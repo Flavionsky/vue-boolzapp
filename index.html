@@ -56,9 +56,12 @@
         </div>
         <div class="chat-nav">
           <ul  class="users">
-            <li @click="selectItem(user),editMessageClose()" v-for="user in filterUsers" class="user c-flex" v-bind:class="{backgroundColor:(activeContact == user)}">
+            <li @click="selectItem(user),editMessageClose()" v-for="(user, index) in filterUsers" class="user c-flex" v-bind:class="{backgroundColor:(activeContact == user)}">
               <img :src="user.url" alt="avatar">
-              <h3>{{user.name}}</h3>
+              <div class="user-info">
+                <h3>{{user.name}}</h3>
+                <div class="last-message">{{user.messages[user.messages.length-1].text}}</div>
+              </div>
             </li>
           </ul>
         </div>
@@ -104,7 +107,7 @@
             </li>
           </ul>
         </div>
-        <div id="editDropdown" class="hidden c-flex">
+        <div v-if="editActive" id="editDropdown" class="c-flex">
           <div class="left-side c-flex">
             <i class="fas fa-pencil-alt"></i>
             <h5>Modifica messaggio</h5>
@@ -119,10 +122,10 @@
              <a href="#"><i class="far fa-2x fa-smile"></i></a>
           </div>
           <input v-if="editActive" v-model="newMessage" type="text" name="" id="">
-          <input v-else v-model="newMessage" v-on:keyup.enter="insertNewMessage(newMessage), replyMessage()" type="text" name="" placeholder="Scrivi un messaggio">
+          <input v-else v-model="newMessage" v-on:keyup.enter="insertNewMessage(newMessage),removeUser(activeContact), replyMessage()" type="text" name="" placeholder="Scrivi un messaggio">
           <div class="icon c-flex">
-             <a id="microphone" href="#"><i class="fas fa-2x fa-microphone"></i></a>
-             <a @click="editMessage()" id="check" class="hidden" href="#"><i class="fas fa-2x fa-check"></i></a>
+            <a v-if="editActive" @click="editMessage()" id="check" href="#"><i class="fas fa-2x fa-check"></i></a>
+             <a v-else id="microphone" href="#"><i class="fas fa-2x fa-microphone"></i></a>
           </div>
         </div>
       </div>

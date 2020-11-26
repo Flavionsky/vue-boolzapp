@@ -161,6 +161,20 @@ a{
   position: absolute;
   left: 30px;
 }
+.chat-nav > ul > li .last-message{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+  opacity: 0.8;
+}
+.chat-nav > ul > li > .user-info{
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.chat-nav > ul > li > h3{
+  width: 100px;
+}
 .right-section > .header-nav{
   min-height: 80px;
   justify-content: space-between;
